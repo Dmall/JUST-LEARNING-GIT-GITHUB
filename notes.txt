@@ -1,0 +1,135 @@
+git status
+git init
+git status
+git add .
+git restore --staged first.py [mane jo bhi changes humne abhi kiya hai usko phir se undo karna chahte hai tob ye code likhna hai]
+git log
+git log --oneline
+git log --stat
+git log -p
+git show "7-digit-sha-id"
+git diff
+
+"helper, helper2 is the branch name"
+
+[Pull Back Your "sha-id" Related State (matlab sha id ke hisab se kya state thi code ki) {git checkout "7-digit-sha-id"}. Ab agar hum chahte hi phir se wahi par chal aaye jaha hum the is code (git checkout "7-digit-sha-id") ke run hone se Pehle then, {git checkout master}]
+
+git branch helper [To Make A Branch jaha hum hai abhi] [agar hum chahe toh, kisi dusre commit se jakar bhi branch bana sakte hai through, (git branch helper <sha-id>)]
+
+git branch [Agar hue ye pata karna hai ki hum kon se branch par hai toh, (Jaha pe ye "*" sign hoga wahi, humara branch hoga)]
+
+git log --oneline [Branch banate hi wah dikhta kaisa hai.]
+
+1212605 (HEAD -> main, helper) 3-commit
+0315571 2-wala
+63ee7d7 (origin/main, origin/HEAD) 1-wala
+55833ab Initial commit
+
+git checkout helper [To go your helper branch and If you again go to the main branch (git checkout main){lekin jaise hi hum "helper" branch se apne "main" branch me aayenge waise hi hamara kiya huaa kaam helper branch me rehne ke daruan wah saara ka saara delete ho jayega parmanently nahi hoga kyuki, jaise hi hum apne "helper" branch me phir se jayenge waise hi hum phir ye un saari ki saari codes ko phir se access kar payenge}] 
+
+git log --oneline [See the main/hepler branch's commits]
+
+git log --oneline --all
+
+git log --oneline --all --graph
+
+git branch -d helper [It gives hint about you are deleting it] [Note: You Can't delete helper branch without "Switched" main branch {git checkout main}]
+
+git branch -D helper [It gives delete] [Note: You Can't delete helper branch without "Switched" in main branch {git checkout main}]
+
+git merge helper2 (This is stat-forward merging) [Note: You Can't delete helper2 branch without "Switched" in main branch {git checkout main}] [Note: Merging karne ke baad agar hum un branches ko delete bhi kar de phir bhi us branches ke codes delete nahi hote hai kyuki, ]
+
+git branch -D helper [It gives delete] [Note: You Can't delete helper branch without "Switched" in main branch {git checkout main}]
+
+[This is Complicated Merging] {1. git branch final, 2. git branch, 3. git checkout final, 4. git branch, 5. Add print(a)[copy it kyuki, jaise hi hum apne main branch pe jeyege ye remove ho jayega] on seventh line of first.py file, 6. git add . , 7. git commit -m "10 - final branch commit", 8. git checkout main, 9. Paste that copied code, same line par jaise "7th" jo Pehle wale code ka tha, matlab hume wahi code paste karna hai, jaha par Pehle likha huaa tha jis line par tha. 9. git add . 10. git commit -m "11-main branch commit", 11. git log --oneline --all --graph, 12. git merge final, [jaise hi hum ye likhenge, waise hi hum "Resolve in Merge Editor"], we have to chose which we want to take, or take both. 13. git log --oneline [Hum jis code ko select karenge ("12" me) wahi "commit" deikhega hume dono me se (when this situation "Resolve in Merge Editor" develop), baki jiko hum unselect karenge wah wala "commit" hume nahi dikhega] 14. Ab agar hum chahe toh, apna branch ko delete bhi kar sakte hai kyuki, humne merging complete kar li hai}
+
+
+git pull origin main
+
+CODE-VERSIONING
+
+1. git log --oneline
+2. git tag -a v1.0.0 <sha-id [Which we want to versioning]> [This will open vim editor then, press (FN+INSERT) button and then, write version like "V1.0.0", after that press (ESC) and write (:wq [it will not show on vim editor])
+3. git log --oneline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"BASICS COMMANDS"
+
+1. git init (To initialize a git repo)
+2. git status (Tells you current status of git repo)
+3. git add filename.py | git add . (Move work to staging area)
+4. git commit -m "commit message" [Local Versioning]
+5. Create a ".gitignore" file and add files/folders that doesn't need tracking
+
+
+
+"SEEING COMMITS"
+
+1. git log (See details for all the commits)
+2. git log --oneline (1 liner details for all commits)
+3. git log --stat (Details of changes on commit level)
+4. git log -p (See code changes on commit level)
+5. git show <6 digit sha id> (See changes on specific commit)
+6. git diff (Chnages made within staging area before commit)
+
+
+
+"BRANCHING AND MERGING"
+
+1. git branch <name> <sha id> (Create a new branch)
+2. git branch (Lists all branches)
+3. git checkout <branch> (Switch to another branch)
+4. git log --oneline --all (See commits of all branches)
+5. git log --oneline --all --graph (Graph of commits from all branches)
+6. git branch -d/-D <branch> (Deletes a branch)
+7. git merge <branch> (Run from master/main)
+
+
+
+
+"WORKING WITH REMOTE REPO"
+
+1. git remote add origin <url> (Declaring remote repo)
+2. git push origin master/main (Sends local repo to origin)
+3. git pull origin master/main (Pull code from remote repo)
+4. git clone <url> (Download/copy remote repo)
+
+
+
+
+
+"UNDERSTANDING SOFTWARE VERSIONS -> V.1.0.0"
+
+1. git tag -a v1.0.0 <sha(optional)>
+    Vim editor:
+    click (FN+INSERT) button --> To write a message
+    :wq --> Save And Quit
+
+2. git log (Check if tagging was done successfully)
+3. git tag -d v1.0.0 (Delete the mentioned tag)
+
+
